@@ -1,4 +1,4 @@
-﻿const { chromium } = require('playwright');
+const { chromium } = require('playwright');
 
 async function scrapeSums() {
   const browser = await chromium.launch({ headless: true });
@@ -34,7 +34,7 @@ async function scrapeSums() {
     
     const pageSum = numbers.reduce((acc, n) => acc + n, 0);
     grandTotal += pageSum;
-    console.log(Seed page sum:  (URL: ));
+    console.log(`Seed page sum:  (URL: ));
     await page.close();
   }
   
