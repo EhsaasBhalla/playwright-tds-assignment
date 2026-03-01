@@ -34,12 +34,12 @@ async function scrapeSums() {
     
     const pageSum = numbers.reduce((acc, n) => acc + n, 0);
     grandTotal += pageSum;
-    console.log(`Seed page sum:  (URL: ));
+    console.log(`Seed page sum: ${pageSum.toFixed(2)} (URL: ${url})`);
     await page.close();
   }
   
   await browser.close();
-  console.log(GRAND TOTAL SUM OF ALL TABLES: );
+  console.log(`GRAND TOTAL SUM OF ALL TABLES: ${grandTotal.toFixed(2)}`);
   return grandTotal;
 }
 
