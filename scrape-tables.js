@@ -20,7 +20,7 @@ async function scrapeSums() {
   for (const url of urls) {
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle' });
-    await page.waitForSelector('table');
+    await page.waitForSelector('table', { timeout: 10000 });
     
     const numbers = await page.evaluate(() => {
       const nums = [];
