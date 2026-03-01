@@ -1,34 +1,21 @@
 ﻿name: Table Scraper QA (23f3002949@ds.study.iitm.ac.in)
-
 on: [push, workflow_dispatch]
-
 jobs:
   scrape:
-    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
           cache: 'npm'
       
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci
-      
-      - name: Install Playwright browsers
+        
+      - name: Install Playwright
         run: npx playwright install --with-deps
-      
-      - name: 23f3002949@ds.study.iitm.ac.in - Scrape and sum tables
+        
+      - name: 23f3002949@ds.study.iitm.ac.in - Scrape tables
         run: node scrape-tables.js
-      
-      - name: Upload logs if failed
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-logs
-          path: |
-            playwright-report/
-            test-results/
